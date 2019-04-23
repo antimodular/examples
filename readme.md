@@ -10,3 +10,6 @@ Use a polar grid shader to warp a texture. Shader found here: https://www.shader
 
 Set the pan and tilt angle of an ofNode. This simulates a pan/tilt search light.
 ![](https://github.com/antimodular/examples/blob/master/panTilt.png)
+
+Get the intersection circle between spheres.
+![](https://github.com/antimodular/examples/blob/master/panTilt.png)

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<scene_camera>
+	<showMainCam>1</showMainCam>
+	<showSideCams>1</showSideCams>
+	<moveByMouse>1</moveByMouse>
+	<bLoadCamPos>0</bLoadCamPos>
+	<bSaveCamPos>0</bSaveCamPos>
+</scene_camera>
