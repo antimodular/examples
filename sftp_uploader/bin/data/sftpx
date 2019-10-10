@@ -1,0 +1,20 @@
+#!/bin/bash
+
+export RND=`cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c 32`
+export TMPDIR=/tmp/$RND
+export FILENAME=$(basename "$4")
+export DSTDIR=$(dirname "$4")
+
+mkdir $TMPDIR
+cp "$3" $TMPDIR/$FILENAME
+
+export SSHPASS=$1
+/usr/local/bin/sshpass -e sftp -oBatchMode=no -b - $2 << !
+   lcd $TMPDIR
+   cd $DSTDIR
+   put $FILENAME
+   bye
+!
+
+rm $TMPDIR/$FILENAME
+rmdir $TMPDIR

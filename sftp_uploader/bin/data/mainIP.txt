@@ -1,0 +1,4 @@
+IP:123.123.123.70
+userName:Peter
+password:myPassword
+remotePath:/home/www/myUrl.com/transfer/
