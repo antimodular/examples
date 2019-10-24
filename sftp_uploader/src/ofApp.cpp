@@ -2,119 +2,126 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-  
-    // this is our buffer to stroe the text data
-    ofLog()<<"looking for file masterIP.txt";
-    ofBuffer buffer = ofBufferFromFile("mainIP.txt");
     
-    if(buffer.size()) {
-        
-        int cnt = 0;
-        for (ofBuffer::Line it = buffer.getLines().begin(), end = buffer.getLines().end(); it != end; ++it) {
-            
-            string line = *it;
-            
-            // copy the line to draw later
-            // make sure its not a empty line
-            if(line.empty() == false) {
-                
-                vector<string> split = ofSplitString(line, ":");
-                
-                if(split.size() >= 2){
-                    if(split[0] == "IP") IP = split[1]; 
-                    if(split[0] == "userName") userName = split[1];
-                    if(split[0] == "password") password = split[1];
-                    if(split[0] == "remotePath") remotePath = split[1];
-                }
-            }
-            
-            // print out the line
-            cout << line << endl;
-        }
-        
-        ofLog()<<"found IP "<<IP<<" user "<<userName<<" passw "<<password<<" remotePath "<<remotePath;
+    
+    sftp_object.setup();
+    
+    optionCnt = 0;
+    
+    for(int i=0; i<6;i++){
+        options.push_back(i+1);
     }
-
-    scriptPath = ofToDataPath("./sftpx");
-    localPath = ofToDataPath("uploadFile/connections.txt");
-
+    
+    sendString = "0";
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    
-    if(ofGetElapsedTimef() > 3){
+    ofSetWindowTitle("fps "+ofToString(ofGetFrameRate(),2));
+    if(ofGetElapsedTimef()-uploadTimer > 5){
+        uploadTimer = ofGetElapsedTimef();
         
-        //string myScript = "/Users/stephanschulz/Desktop/./sftpx mypassword remoteUser@ipAddress ~/Desktop/connections.txt /home/www/myUrl.com/transfer/connections.txt";
+        sendString = "";
         
-        string myScript = scriptPath+" "+password+" "+userName+"@"+IP+" "+localPath+" "+remotePath+"/connections.txt";
         
-        cout<<myScript<<endl;
-        std::system(myScript.c_str());
+        //0 = none
+        //1 = all
+        //
         
-        std::exit(1);
+        
+        options.clear();
+        for(int i=0; i<6;i++){
+            options.push_back(i+1);
+        }
+        
+        //pair 1
+        int rr = ofRandom(options.size());
+        sendString += ofToString( options[rr]);
+        options.erase(options.begin()+rr);
+        rr = ofRandom(options.size());
+        sendString += ofToString( options[rr]);
+        options.erase(options.begin()+rr);
+        
+        //pair 2
+        rr = ofRandom(options.size());
+        sendString += ofToString( options[rr]);
+        options.erase(options.begin()+rr);
+        rr = ofRandom(options.size());
+        sendString += ofToString( options[rr]);
+        options.erase(options.begin()+rr);
+        
+        //pair 3
+        rr = ofRandom(options.size());
+        sendString += ofToString( options[rr]);
+        options.erase(options.begin()+rr);
+        rr = ofRandom(options.size());
+        sendString += ofToString( options[rr]);
+        
+        ofLog()<<"sendString "<<sendString;
+        sftp_object.addSFTP(sendString);
     }
     
+    sftp_object.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
-    ofDrawBitmapStringHighlight("sftp upload to IP = "+IP, 10, ofGetHeight()/2);
+    
+    sftp_object.draw(10, 10);
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseEntered(int x, int y){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseExited(int x, int y){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
+    
 }
