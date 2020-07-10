@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<switchTimes>
+	<ON_time></ON_time>
+	<useTime_0>0</useTime_0>
+	<hour_0>0</hour_0>
+	<minute_0>0</minute_0>
+	<OFF_time></OFF_time>
+	<useTime_1>0</useTime_1>
+	<hour_1>0</hour_1>
+	<minute_1>0</minute_1>
+</switchTimes>
