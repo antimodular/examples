@@ -1,4 +1,4 @@
-# upload text a file via SFTP with openframeworks and bash
+# upload a text file via SFTP with openframeworks and bash
 
 This method uses this bash script:
 https://stackoverflow.com/questions/16721891/single-line-sftp-from-terminal/27614291#27614291
