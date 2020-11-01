@@ -1,6 +1,8 @@
 #!/bin/bash
 
 export RND=`cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c 32`
+#export RND=`cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-f0-9' | head -c 32`
+export RND=`openssl rand -hex 32`
 export TMPDIR=/tmp/$RND
 export FILENAME=$(basename "$4")
 export DSTDIR=$(dirname "$4")
