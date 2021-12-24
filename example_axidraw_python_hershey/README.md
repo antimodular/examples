@@ -1,8 +1,8 @@
 # How to send plotting commands to Axidraw plotter via Python from inside Openframeworks
 
 
-![](appInUse.png)
-![](plotResult.JPG)
+![](https://github.com/antimodular/examples/blob/master/example_axidraw_python_hershey/images/appInUse.png)
+![](https://github.com/antimodular/examples/blob/master/example_axidraw_python_hershey/images/plotResult.jpg)
 
 Using ` Py_Initialize();`  , `PyRun_SimpleString(python_str.c_str());` and `Py_Finalize();` we can utilize the [Axidraw python API](https://axidraw.com/doc/py_api/#functions-interactive) to plot any path from sinde [Openframeworks](https://openframeworks.cc/)
 
@@ -14,4 +14,4 @@ Using ` Py_Initialize();`  , `PyRun_SimpleString(python_str.c_str());` and `Py_F
 - in xcode got to targets -> build phases -> link binary libraries -> + sign -> add other -> now navigate to the framework as shown in the above line
 
 ## Screenshots
-![Link to Python binary](linkTo_python.png)
+![Link to Python binary](https://github.com/antimodular/examples/blob/master/example_axidraw_python_hershey/images/linkTo_python.png)
